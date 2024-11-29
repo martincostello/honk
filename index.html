@@ -36,7 +36,7 @@
 <meta name="application-name" content="honk.gay" />
 <link rel="canonical" href="https://honk.gay" />
 <link rel="shortcut icon" type="image/png" href="https://honk.gay/icon.png" />
-<script type="text/javascript">
+<script>
     if (self == top) {
         document.documentElement.className = document.documentElement.className.replace(/\bjs-flash\b/, '');
     }
@@ -44,7 +44,7 @@
         top.location = self.location;
     }
 </script>
-<style type="text/css">
+<style>
     html {
         overflow: hidden;
     }
@@ -60,18 +60,18 @@
 </head>
 <body>
     <main>
-        <embed id="honk" src="honk.wav" hidden="true" autostart="true">
+        <embed id="honk" src="honk.wav" hidden autostart="true">
         <a>
             <img id="goose" src="goose.png" alt="A white goose holding a pride flag in its beak running from left to right" />
         </a>
     </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const element = document.getElementById('honk');
+            const honk = new Audio(element.getAttribute('src'));
+            const goose = document.getElementById('goose');
+            goose.addEventListener('click', async () => await honk.play());
+        });
+    </script>
 </body>
-<script type="text/javascript">
-    document.addEventListener('DOMContentLoaded', function() {
-        const element = document.getElementById('honk');
-        const honk = new Audio(element.getAttribute('src'));
-        const goose = document.getElementById('goose');
-        goose.addEventListener('click', async () => await honk.play());
-    });
-</script>
 </html>
