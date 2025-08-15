@@ -5,10 +5,7 @@ on:
     branches: [main]
   workflow_dispatch:
 
-permissions:
-  contents: read
-  id-token: write
-  pages: write
+permissions: {}
 
 concurrency:
   group: pages
@@ -20,6 +17,10 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      contents: read
+      id-token: write
+      pages: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
